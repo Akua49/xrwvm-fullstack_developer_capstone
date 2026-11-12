@@ -1,0 +1,28 @@
+from django.db import migrations, models
+import django.core.validators
+import django.db.models.deletion
+
+
+class Migration(migrations.Migration):
+    initial = True
+    dependencies = []
+    operations = [
+        migrations.CreateModel(
+            name='CarMake',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('name', models.CharField(max_length=80, unique=True)),
+                ('description', models.TextField(blank=True)),
+            ],
+        ),
+        migrations.CreateModel(
+            name='CarModel',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('name', models.CharField(max_length=80)),
+                ('type', models.CharField(choices=[('Sedan', 'Sedan'), ('SUV', 'SUV'), ('Wagon', 'Wagon'), ('Truck', 'Truck'), ('Coupe', 'Coupe')], default='Sedan', max_length=12)),
+                ('year', models.IntegerField(validators=[django.core.validators.MinValueValidator(2015), django.core.validators.MaxValueValidator(2023)])),
+                ('car_make', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='djangoapp.carmake')),
+            ],
+        ),
+    ]
