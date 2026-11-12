@@ -1,10 +1,14 @@
-# fullstack_developer_capstone
+# Best Cars Dealership — Full Stack Capstone
+
+Repository name: `xrwvm-fullstack_developer_capstone`
+
+Project name: **Best Cars Dealership**
 
 Best Cars: React client, Django authentication and car catalogue, Express/MongoDB dealership and review service, and a Flask/VADER sentiment microservice.
 
 ## Local development
 
-1. Install Python requirements from `server/requirements.txt` and run `npm ci && npm run build` in `server/frontend`.
+1. Install Python requirements from `server/requirements.txt` and run `npm install --no-audit --no-fund && npm run build` in `server/frontend`.
 2. Set `DEBUG=true`, `backend_url`, and `sentiment_analyzer_url` for the development services. Configure `ALLOWED_HOSTS` and `CSRF_TRUSTED_ORIGINS` for the actual hostname.
 3. Run `python manage.py makemigrations djangoapp`, `python manage.py migrate`, `python manage.py seed_cars`, and `python manage.py createsuperuser` from `server`.
 4. Run the MongoDB/Express and sentiment containers with Docker Compose. Run Django on port 8000. Use `/admin/` for the car catalogue and `/dealers` for the application.
