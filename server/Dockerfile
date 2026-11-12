@@ -1,7 +1,7 @@
 FROM node:22-bookworm-slim AS frontend
 WORKDIR /build
 COPY frontend/package*.json ./
-RUN npm ci
+RUN npm install --no-audit --no-fund
 COPY frontend/ ./
 RUN npm run build
 FROM python:3.12-slim
@@ -13,3 +13,4 @@ COPY --from=frontend /build/build ./frontend/build
 RUN python manage.py collectstatic --noinput
 EXPOSE 8000
 CMD ["gunicorn", "--bind", "0.0.0.0:8000", "djangoproj.wsgi:application"]
+
